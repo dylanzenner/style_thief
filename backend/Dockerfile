@@ -4,8 +4,6 @@ WORKDIR /code
 
 COPY ./requirements.txt /code/requirements.txt
 
-COPY ./credentials.json ./credentials.json
-
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 COPY ./app /code/app
