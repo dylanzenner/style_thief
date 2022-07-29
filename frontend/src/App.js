@@ -7,6 +7,7 @@ function App() {
     const [baseImage, setBaseImage] = useState(null);
     const [styleImagePreview, setStyleImagePreview] = useState(logo);
     const [styleImage, setStyleImage] = useState(null);
+    const [stylizedImage, setStylizedImage] = useState(null);
 
 
 
@@ -50,8 +51,9 @@ function App() {
         fetch('http://localhost:8000/upload', requestOptions)
         .then(response => response.json())
         .then(function(response) {
-            console.log(response)
+            setStylizedImage(response)
         })
+
 
     
     }
@@ -61,15 +63,15 @@ function App() {
       <div className={'relative text-sky-400 text-5xl mt-4 font-bold'}>
         Style Thief
       </div>
+    
+        <div className={'mt-5 py-20 grid grid-cols-4 gap-4 content-center'}>
 
-        <div className={'h-full mt-5 grid grid-cols-4 gap-4 content-center'}>
-
-            <div className={'aspect-w-4 aspect-h-3 inline-block ml-5'}>
+            <div className={'aspect-w-3 aspect-h-3 inline-block ml-5'}>
                 <img className={'border-2 rounded'} height={400} width={400} alt={'base image'} src={baseImagePreview}/>
 
             </div>
 
-            <div className={'aspect-w-4 aspect-h-4 inline-block ml-5'}>
+            <div className={'aspect-w-3 aspect-h-3 inline-block ml-5'}>
                 <img className={'border-2 rounded'} height={400} width={400} alt={'style image'} src={styleImagePreview}/>
 
             </div>
@@ -77,7 +79,7 @@ function App() {
             <div/>
 
 
-            <div className={'aspect-w-4 aspect-h-3 inline-block border-2 mr-5'}>
+            <div className={'aspect-w-3 aspect-h-3 inline-block border-2 mr-5'}>
                 BEAST
             </div>
 
