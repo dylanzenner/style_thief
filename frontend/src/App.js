@@ -25,22 +25,35 @@ function App() {
 
     function handleOnSubmit(event){
         const formData = new FormData();
+        
+
         formData.append(
-            'file',
+            'base_image',
             baseImage,
             baseImage.name
         );
+
+        formData.append(
+            'style_image',
+            styleImage,
+            styleImage.name
+        );
+
 
         const requestOptions = {
             method: 'POST',
             body: formData
         };
+        console.log(requestOptions)
+
 
         fetch('http://localhost:8000/upload', requestOptions)
         .then(response => response.json())
         .then(function(response) {
             console.log(response)
         })
+
+    
     }
 
   return (
@@ -95,7 +108,8 @@ function App() {
 
 
             <div>
-                <button className={'border-2 px-2 hover:-translate-y-0.5 hover:text-sky-400'}>
+                
+                <button onClick={handleOnSubmit} className={'border-2 px-2 hover:-translate-y-0.5 hover:text-sky-400'}>
                     Transfer
                 </button>
 
