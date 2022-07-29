@@ -3,19 +3,42 @@ import './App.css';
 import {useState} from "react";
 
 function App() {
-    const [baseImage, setBaseImage] = useState(null);
-    const [styleImage, setStyleImage] = useState(null);
+    const [baseImage, setBaseImage] = useState(logo);
+    const [styleImage, setStyleImage] = useState(logo);
 
 
 
     function setBaseImageHandler(event){
-        console.log(event.target)
-        setBaseImage(URL.createObjectURL(event.target.files[0]))
+        event.preventDefault()
+        setBaseImage(event.target.files[0])
+        // setBaseImage(URL.createObjectURL(event.target.files[0]))
+        
     }
 
     function setStyleImageHandler(event){
-        console.log(event.target)
+        event.preventDefault()
+        // console.log(event.target)
         setStyleImage(URL.createObjectURL(event.target.files[0]))
+    }
+
+    function handleOnSubmit(event){
+        const formData = new FormData();
+        formData.append(
+            'file',
+            baseImage,
+            baseImage.name
+        );
+
+        const requestOptions = {
+            method: 'POST',
+            body: formData
+        };
+
+        fetch('http://localhost:8000/upload', requestOptions)
+        .then(response => response.json())
+        .then(function(response) {
+            console.log(response)
+        })
     }
 
   return (
@@ -47,16 +70,24 @@ function App() {
 
         <div className={'relative mt-5 grid grid-cols-4 gap-4 content-center'}>
 
-            <div className={'ml-5 hover:-translate-y-0.5'}>
-                <label htmlFor="style-image" className={'border-2 cursor-pointer px-2 hover:text-sky-400'}>Upload Base
-                    Image</label>
-                <input id={'style-image'} type={'file'} className={'hidden'} onChange={setBaseImageHandler}
-                       placeholder={''}/>
+            <div className={'ml-5 hover:-translate-y-0.5'}>                
+                <form>
+                   <fieldset>
+                        <input id={'style-image'} type={'file'} accept={'.jpeg, .png, .jpg'} className={'hidden'} onChange={setBaseImageHandler} placeholder={''}/>
+                    </fieldset> 
+                    <label htmlFor={'style-image'} className={'border-2 cursor-pointer px-2 hover:text-sky-400'}>Upload Base Image</label>
+                </form>
+                <button onClick={handleOnSubmit}>Upload</button>
+        
             </div>
 
             <div className={'ml-5 hover:-translate-y-0.5'}>
-                <label htmlFor="base-image" className={'border-2 cursor-pointer px-2 hover:text-sky-400'}>Upload Style Image</label>
-                <input id={'base-image'} type={'file'} className={'hidden'} onChange={setStyleImageHandler}  placeholder={''}/>
+                <form>
+                    <fieldset>
+                        <input id={'base-image'} type={'file'} accept={'.jpeg, .png, .jpg'} className={'hidden'} onChange={setStyleImageHandler}  placeholder={''}/>
+                    </fieldset>
+                    <label htmlFor={'base-image'} className={'border-2 cursor-pointer px-2 hover:text-sky-400'}>Upload Style Image</label>
+                </form>
             </div>
 
 
