@@ -3,22 +3,24 @@ import './App.css';
 import {useState} from "react";
 
 function App() {
-    const [baseImage, setBaseImage] = useState(logo);
-    const [styleImage, setStyleImage] = useState(logo);
+    const [baseImagePreview, setBaseImagePreview] = useState(logo);
+    const [baseImage, setBaseImage] = useState(null);
+    const [styleImagePreview, setStyleImagePreview] = useState(logo);
+    const [styleImage, setStyleImage] = useState(null);
 
 
 
     function setBaseImageHandler(event){
         event.preventDefault()
         setBaseImage(event.target.files[0])
-        // setBaseImage(URL.createObjectURL(event.target.files[0]))
+        setBaseImagePreview(URL.createObjectURL(event.target.files[0]))
         
     }
 
     function setStyleImageHandler(event){
         event.preventDefault()
-        // console.log(event.target)
-        setStyleImage(URL.createObjectURL(event.target.files[0]))
+        setStyleImage(event.target.files[0])
+        setStyleImagePreview(URL.createObjectURL(event.target.files[0]))
     }
 
     function handleOnSubmit(event){
@@ -47,15 +49,15 @@ function App() {
         Style Thief
       </div>
 
-        <div className={'mt-5 grid grid-cols-4 gap-4 content-center'}>
+        <div className={'h-full mt-5 grid grid-cols-4 gap-4 content-center'}>
 
             <div className={'aspect-w-4 aspect-h-3 inline-block ml-5'}>
-                <img className={'border-2 rounded'} height={400} width={400} alt={'base image'} src={baseImage}/>
+                <img className={'border-2 rounded'} height={400} width={400} alt={'base image'} src={baseImagePreview}/>
 
             </div>
 
             <div className={'aspect-w-4 aspect-h-4 inline-block ml-5'}>
-                <img className={'border-2 rounded'} height={400} width={400} alt={'style image'} src={styleImage}/>
+                <img className={'border-2 rounded'} height={400} width={400} alt={'style image'} src={styleImagePreview}/>
 
             </div>
 
@@ -70,18 +72,19 @@ function App() {
 
         <div className={'relative mt-5 grid grid-cols-4 gap-4 content-center'}>
 
-            <div className={'ml-5 hover:-translate-y-0.5'}>                
+            <div className={'ml-5'}>                
                 <form>
                    <fieldset>
                         <input id={'style-image'} type={'file'} accept={'.jpeg, .png, .jpg'} className={'hidden'} onChange={setBaseImageHandler} placeholder={''}/>
                     </fieldset> 
                     <label htmlFor={'style-image'} className={'border-2 cursor-pointer px-2 hover:text-sky-400'}>Upload Base Image</label>
                 </form>
+                <br/>
                 <button onClick={handleOnSubmit}>Upload</button>
         
             </div>
 
-            <div className={'ml-5 hover:-translate-y-0.5'}>
+            <div className={'ml-5'}>
                 <form>
                     <fieldset>
                         <input id={'base-image'} type={'file'} accept={'.jpeg, .png, .jpg'} className={'hidden'} onChange={setStyleImageHandler}  placeholder={''}/>
