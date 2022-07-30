@@ -8,7 +8,6 @@
 # Mac/OSX
 .DS_Store
 backend/.DS_Store
-backend/
 
 # Windows
 Thumbs.db
