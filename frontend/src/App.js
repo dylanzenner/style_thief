@@ -1,20 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 function App() {
     const [baseImagePreview, setBaseImagePreview] = useState(logo);
     const [baseImage, setBaseImage] = useState(null);
     const [styleImagePreview, setStyleImagePreview] = useState(logo);
     const [styleImage, setStyleImage] = useState(null);
-    const [stylizedImage, setStylizedImage] = useState(null);
-
+    const [stylizedImage, setStylizedImage] = useState(logo);
 
 
     function setBaseImageHandler(event){
         event.preventDefault()
         setBaseImage(event.target.files[0])
         setBaseImagePreview(URL.createObjectURL(event.target.files[0]))
+        console.log(baseImage)
         
     }
 
@@ -26,6 +26,8 @@ function App() {
 
     function handleOnSubmit(event){
         const formData = new FormData();
+        console.log('base image: ' + baseImagePreview)
+        console.log('style image: ' + styleImagePreview)
         
 
         formData.append(
@@ -43,20 +45,32 @@ function App() {
 
         const requestOptions = {
             method: 'POST',
-            body: formData
+            body: formData,
         };
-        console.log(requestOptions)
-
 
         fetch('http://localhost:8000/upload', requestOptions)
-        .then(response => response.json())
-        .then(function(response) {
-            setStylizedImage(response)
+        .then(response => response.blob())
+        .then(blob => {
+            console.log(blob)
+            let blobURL = URL.createObjectURL(blob);
+            setStylizedImage(blobURL)
+            let image = document.getElementById('stylized-image')
+            image.onload = function(){
+                URL.revokeObjectURL(this.src);
+            
+            }
+            image.src = blobURL;
+            setStylizedImage(blobURL)
+            console.log(stylizedImage)
+
+
+        })
+        .catch(error => {
+            console.log(error)
         })
 
-
-    
     }
+
 
   return (
     <div className="App">
@@ -80,7 +94,8 @@ function App() {
 
 
             <div className={'aspect-w-3 aspect-h-3 inline-block border-2 mr-5'}>
-                BEAST
+                <img id={'stylized-image'} className={'border-2 rounded'} height={400} width={400} alt={'stylized-image'} src={stylizedImage}/>
+
             </div>
 
         </div>
@@ -94,8 +109,6 @@ function App() {
                     </fieldset> 
                     <label htmlFor={'style-image'} className={'border-2 cursor-pointer px-2 hover:text-sky-400'}>Upload Base Image</label>
                 </form>
-                <br/>
-                <button onClick={handleOnSubmit}>Upload</button>
         
             </div>
 
