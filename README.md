@@ -2,7 +2,7 @@
 
 
 ### Step 1: 
-- clone the repo to your local repo
+- clone the repo to your local machine
 
 ### Step 2:
 - open up the file in your editor of choice.
