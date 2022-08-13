@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  backend:
+    build: ./backend
+    container_name: style_thief_backend
+    ports:
+      - '8000:8000'
+    volumes:
+      - ./backend:/code
+
+  frontend:
+    build: ./frontend
+    container_name: style_thief_frontend
+    ports:
+      - '3000:3000'
+    stdin_open: true
+    tty: true
