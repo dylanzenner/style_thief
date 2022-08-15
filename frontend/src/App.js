@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 function App() {
     const [baseImagePreview, setBaseImagePreview] = useState(logo);
@@ -33,9 +33,14 @@ function App() {
         link.href = downloadLink;
         link.click();
         URL.revokeObjectURL(link.href);
+        setStylizedImage(logo);
 
     }
 
+    useEffect( () => {
+        setLoading(false)
+
+    }, [stylizedImage])
 
     function handleOnSubmit(event){
         setLoading(true)
@@ -43,7 +48,6 @@ function App() {
         console.log('base image: ' + baseImagePreview)
         console.log('style image: ' + styleImagePreview)
         
-
         formData.append(
             'base_image',
             baseImage,
@@ -55,7 +59,6 @@ function App() {
             styleImage,
             styleImage.name
         );
-
 
         const requestOptions = {
             method: 'POST',
@@ -79,14 +82,11 @@ function App() {
             image.src = blobURL;
             setStylizedImage(blobURL)
             console.log(stylizedImage)
-            setLoading(false)
-
 
         })
         .catch(error => {
             console.log(error)
         })
-        
 
     }
 
@@ -111,7 +111,9 @@ function App() {
 
             <div/>
             {loading === true ? 
-            <span className={"loader"}></span>
+            <div className={'aspect-w-3 aspect-h-3 inline-block border-2 mr-5'}>
+                <span className={"loader inline-block mx-auto my-auto"}></span>
+            </div>
             :
             <div className={'aspect-w-3 aspect-h-3 inline-block border-2 mr-5'}>
                 <img id={'stylized-image'} className={'border-2 rounded'} height={400} width={400} alt={'stylized'} src={stylizedImage}/>
@@ -154,11 +156,7 @@ function App() {
             </div>
 
             <div id={'stylized-image-button'} className={'ml-5 hover:-translate-y-0.5'}>
-                <button onClick={handleDownload}>Download Image</button>
-                {/* <label htmlFor="stylized-image-button" className={'border-2 cursor-pointer px-2 hover:text-sky-400'}>Download Stylized
-                    Image</label>
-                <a download id={'stylized-image-button'} type={'file'} className={'hidden'} onChange={null} href={stylizedImage}
-                       placeholder={''}/> */}
+                <button className={'border-2 cursor-pointer px-2 hover:text-sky-400'} onClick={handleDownload}>Download Image</button>
             </div>
 
 
