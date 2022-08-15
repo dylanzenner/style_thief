@@ -157,7 +157,7 @@ function App() {
 
                     </div>
 
-                    <div id={'stylized-image-button'} className={'ml-5 hover:-translate-y-0.5'}>
+                    <div id={'stylized-image-button'} className={'ml-5'}>
                         <button className={'border-2 border-rose-400 cursor-pointer px-2 bg-white rounded-lg active:bg-gradient-to-r from-rose-100 to-teal-100 drop-shadow-2xl text-2xl'} onClick={handleDownload}>Download Image</button>
                     </div>
 
