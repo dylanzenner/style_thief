@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import {useState, useEffect} from "react";
 
+
 function App() {
     const [baseImagePreview, setBaseImagePreview] = useState(logo);
     const [baseImage, setBaseImage] = useState(null);
@@ -92,30 +93,30 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className="App bg-image">
       <div className={'relative text-sky-400 text-5xl mt-4 font-bold'}>
         Style Thief
       </div>
     
         <div className={'mt-5 py-20 grid grid-cols-4 gap-4 content-center'}>
 
-            <div className={'aspect-w-3 aspect-h-3 inline-block ml-5'}>
+            <div className={'aspect-w-3 aspect-h-3 inline-block ml-5 bg-white'}>
                 <img className={'border-2 rounded'} height={400} width={400} alt={'base'} src={baseImagePreview}/>
 
             </div>
 
-            <div className={'aspect-w-3 aspect-h-3 inline-block ml-5'}>
+            <div className={'aspect-w-3 aspect-h-3 inline-block ml-5 bg-white'}>
                 <img className={'border-2 rounded'} height={400} width={400} alt={'style'} src={styleImagePreview}/>
 
             </div>
 
             <div/>
             {loading === true ? 
-            <div className={'aspect-w-3 aspect-h-3 inline-block border-2 mr-5'}>
+            <div className={'aspect-w-3 aspect-h-3 inline-block border-2 mr-5 bg-white'}>
                 <span className={"loader inline-block mx-auto my-auto"}></span>
             </div>
             :
-            <div className={'aspect-w-3 aspect-h-3 inline-block mr-5'}>
+            <div className={'aspect-w-3 aspect-h-3 inline-block mr-5 bg-white'}>
                 <img id={'stylized-image'} className={'border-2 rounded'} height={400} width={400} alt={'stylized'} src={stylizedImage}/>
             </div>
 
