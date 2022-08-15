@@ -134,7 +134,7 @@ function App() {
                         <fieldset>
                                 <input id={'style-image'} type={'file'} accept={'.jpeg, .png, .jpg'} className={'hidden'} onChange={setBaseImageHandler} placeholder={''}/>
                         </fieldset> 
-                            <label htmlFor={'style-image'} className={'border-2 bg-white rounded-lg active:bg-gradient-to-r from-rose-100 to-teal-100 drop-shadow-2xl text-2xl cursor-pointer px-2'}>Upload Base Image</label>
+                            <label htmlFor={'style-image'} className={'border-2 border-rose-400 bg-white rounded-lg active:bg-gradient-to-r from-rose-100 to-teal-100 drop-shadow-2xl text-2xl cursor-pointer px-2'}>Upload Base Image</label>
                         </form>
                 
                     </div>
@@ -144,21 +144,21 @@ function App() {
                             <fieldset>
                                 <input id={'base-image'} type={'file'} accept={'.jpeg, .png, .jpg'} className={'hidden'} onChange={setStyleImageHandler}  placeholder={''}/>
                             </fieldset>
-                            <label htmlFor={'base-image'} className={'border-2 cursor-pointer bg-white active:bg-gradient-to-r from-rose-100 to-teal-100 rounded-lg drop-shadow-2xl text-2xl px-2'}>Upload Style Image</label>
+                            <label htmlFor={'base-image'} className={'border-2 border-rose-400 cursor-pointer bg-white active:bg-gradient-to-r from-rose-100 to-teal-100 rounded-lg drop-shadow-2xl text-2xl px-2'}>Upload Style Image</label>
                         </form>
                     </div>
 
 
                     <div>
                         
-                        <button onClick={handleOnSubmit} className={'border-2 px-2 bg-white active:bg-gradient-to-r from-rose-100 to-teal-100 rounded-lg drop-shadow-2xl text-2xl'}>
+                        <button onClick={handleOnSubmit} className={'border-2 border-rose-400 px-2 bg-white active:bg-gradient-to-r from-rose-100 to-teal-100 rounded-lg drop-shadow-2xl text-2xl'}>
                             Transfer
                         </button>
 
                     </div>
 
                     <div id={'stylized-image-button'} className={'ml-5 hover:-translate-y-0.5'}>
-                        <button className={'border-2 cursor-pointer px-2 bg-white rounded-lg active:bg-gradient-to-r from-rose-100 to-teal-100 drop-shadow-2xl text-2xl'} onClick={handleDownload}>Download Image</button>
+                        <button className={'border-2 border-rose-400 cursor-pointer px-2 bg-white rounded-lg active:bg-gradient-to-r from-rose-100 to-teal-100 drop-shadow-2xl text-2xl'} onClick={handleDownload}>Download Image</button>
                     </div>
 
 
