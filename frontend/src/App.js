@@ -115,7 +115,7 @@ function App() {
                 <span className={"loader inline-block mx-auto my-auto"}></span>
             </div>
             :
-            <div className={'aspect-w-3 aspect-h-3 inline-block border-2 mr-5'}>
+            <div className={'aspect-w-3 aspect-h-3 inline-block mr-5'}>
                 <img id={'stylized-image'} className={'border-2 rounded'} height={400} width={400} alt={'stylized'} src={stylizedImage}/>
             </div>
 
