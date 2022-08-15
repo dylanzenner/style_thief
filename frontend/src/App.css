@@ -2,6 +2,7 @@
   text-align: center;
 }
 
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -21,7 +22,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 .App-link {
@@ -40,7 +41,7 @@
 .loader {
   width: 48px;
   height: 48px;
-  border: 5px solid #0ff;
+  border: 5px solid #ffe4e6;
   border-bottom-color: transparent;
   border-radius: 50%;
   display: inline-block;
@@ -56,11 +57,3 @@
       transform: rotate(360deg);
   }
   } 
-
-  .bg-image {
-    background: url('img.jpeg');
-    height: 100vh;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }

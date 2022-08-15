@@ -93,75 +93,77 @@ function App() {
 
 
   return (
-    <div className="App bg-image">
-      <div className={'relative text-sky-400 text-5xl mt-4 font-bold'}>
-        Style Thief
-      </div>
-    
-        <div className={'mt-5 py-20 grid grid-cols-4 gap-4 content-center'}>
-
-            <div className={'aspect-w-3 aspect-h-3 inline-block ml-5 bg-white'}>
-                <img className={'border-2 rounded'} height={400} width={400} alt={'base'} src={baseImagePreview}/>
-
+    <div className="App">
+        <div className={""}>
+            <div className={'relative text-5xl mt-4 font-bold text-rose-400'}>
+                Style Thief
             </div>
-
-            <div className={'aspect-w-3 aspect-h-3 inline-block ml-5 bg-white'}>
-                <img className={'border-2 rounded'} height={400} width={400} alt={'style'} src={styleImagePreview}/>
-
-            </div>
-
-            <div/>
-            {loading === true ? 
-            <div className={'aspect-w-3 aspect-h-3 inline-block border-2 mr-5 bg-white'}>
-                <span className={"loader inline-block mx-auto my-auto"}></span>
-            </div>
-            :
-            <div className={'aspect-w-3 aspect-h-3 inline-block mr-5 bg-white'}>
-                <img id={'stylized-image'} className={'border-2 rounded'} height={400} width={400} alt={'stylized'} src={stylizedImage}/>
-            </div>
-
-
-            }
             
+                <div className={'mt-5 py-20 grid grid-cols-4 gap-4 content-center'}>
 
-        </div>
+                    <div className={'aspect-w-3 aspect-h-3 inline-block ml-5 bg-white rounded drop-shadow-2xl'}>
+                        <img className={'border-2 rounded'} height={400} width={400} alt={'base'} src={baseImagePreview}/>
 
-        <div className={'relative mt-5 grid grid-cols-4 gap-4 content-center'}>
+                    </div>
 
-            <div className={'ml-5'}>                
-                <form>
-                   <fieldset>
-                        <input id={'style-image'} type={'file'} accept={'.jpeg, .png, .jpg'} className={'hidden'} onChange={setBaseImageHandler} placeholder={''}/>
-                    </fieldset> 
-                    <label htmlFor={'style-image'} className={'border-2 cursor-pointer px-2 hover:text-sky-400'}>Upload Base Image</label>
-                </form>
-        
-            </div>
+                    <div className={'aspect-w-3 aspect-h-3 inline-block ml-5 bg-white rounded drop-shadow-2xl'}>
+                        <img className={'border-2 rounded'} height={400} width={400} alt={'style'} src={styleImagePreview}/>
 
-            <div className={'ml-5'}>
-                <form>
-                    <fieldset>
-                        <input id={'base-image'} type={'file'} accept={'.jpeg, .png, .jpg'} className={'hidden'} onChange={setStyleImageHandler}  placeholder={''}/>
-                    </fieldset>
-                    <label htmlFor={'base-image'} className={'border-2 cursor-pointer px-2 hover:text-sky-400'}>Upload Style Image</label>
-                </form>
-            </div>
+                    </div>
+
+                    <div/>
+                    {loading === true ? 
+                    <div className={'aspect-w-3 aspect-h-3 inline-block border-2 mr-5 bg-white rounded drop-shadow-2xl'}>
+                        <span className={"loader inline-block mx-auto my-auto"}></span>
+                    </div>
+                    :
+                    <div className={'aspect-w-3 aspect-h-3 inline-block mr-5 bg-white rounded drop-shadow-2xl'}>
+                        <img id={'stylized-image'} className={'border-2 rounded'} height={400} width={400} alt={'stylized'} src={stylizedImage}/>
+                    </div>
 
 
-            <div>
+                    }
+                    
+
+                </div>
+
+                <div className={'relative mt-5 grid grid-cols-4 gap-4 content-center'}>
+
+                    <div className={'ml-5'}>                
+                        <form>
+                        <fieldset>
+                                <input id={'style-image'} type={'file'} accept={'.jpeg, .png, .jpg'} className={'hidden'} onChange={setBaseImageHandler} placeholder={''}/>
+                        </fieldset> 
+                            <label htmlFor={'style-image'} className={'border-2 bg-white rounded-lg active:bg-gradient-to-r from-rose-100 to-teal-100 drop-shadow-2xl text-2xl cursor-pointer px-2'}>Upload Base Image</label>
+                        </form>
                 
-                <button onClick={handleOnSubmit} className={'border-2 px-2 hover:-translate-y-0.5 hover:text-sky-400'}>
-                    Transfer
-                </button>
+                    </div>
 
-            </div>
+                    <div className={'ml-5'}>
+                        <form>
+                            <fieldset>
+                                <input id={'base-image'} type={'file'} accept={'.jpeg, .png, .jpg'} className={'hidden'} onChange={setStyleImageHandler}  placeholder={''}/>
+                            </fieldset>
+                            <label htmlFor={'base-image'} className={'border-2 cursor-pointer bg-white active:bg-gradient-to-r from-rose-100 to-teal-100 rounded-lg drop-shadow-2xl text-2xl px-2'}>Upload Style Image</label>
+                        </form>
+                    </div>
 
-            <div id={'stylized-image-button'} className={'ml-5 hover:-translate-y-0.5'}>
-                <button className={'border-2 cursor-pointer px-2 hover:text-sky-400'} onClick={handleDownload}>Download Image</button>
-            </div>
+
+                    <div>
+                        
+                        <button onClick={handleOnSubmit} className={'border-2 px-2 bg-white active:bg-gradient-to-r from-rose-100 to-teal-100 rounded-lg drop-shadow-2xl text-2xl'}>
+                            Transfer
+                        </button>
+
+                    </div>
+
+                    <div id={'stylized-image-button'} className={'ml-5 hover:-translate-y-0.5'}>
+                        <button className={'border-2 cursor-pointer px-2 bg-white rounded-lg active:bg-gradient-to-r from-rose-100 to-teal-100 drop-shadow-2xl text-2xl'} onClick={handleDownload}>Download Image</button>
+                    </div>
 
 
 
+                </div>
         </div>
     </div>
   );
