@@ -46,8 +46,6 @@ function App() {
     function handleOnSubmit(event){
         setLoading(true)
         const formData = new FormData();
-        console.log('base image: ' + baseImagePreview)
-        console.log('style image: ' + styleImagePreview)
         
         formData.append(
             'base_image',
@@ -82,7 +80,6 @@ function App() {
             }
             image.src = blobURL;
             setStylizedImage(blobURL)
-            console.log(stylizedImage)
 
         })
         .catch(error => {
@@ -120,8 +117,6 @@ function App() {
                     <div className={'aspect-w-3 aspect-h-3 inline-block mr-5 bg-white rounded drop-shadow-2xl'}>
                         <img id={'stylized-image'} className={'border-2 rounded'} height={400} width={400} alt={'stylized'} src={stylizedImage}/>
                     </div>
-
-
                     }
                     
 
@@ -136,7 +131,6 @@ function App() {
                         </fieldset> 
                             <label htmlFor={'style-image'} className={'border-2 border-rose-400 bg-white rounded-lg active:bg-gradient-to-r from-rose-100 to-teal-100 drop-shadow-2xl text-2xl cursor-pointer px-2'}>Upload Base Image</label>
                         </form>
-                
                     </div>
 
                     <div className={'ml-5'}>
