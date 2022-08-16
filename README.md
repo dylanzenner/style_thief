@@ -17,9 +17,7 @@ docker-compose up
 - Stylize your favorite images!
 
 
+https://user-images.githubusercontent.com/54154602/184963072-52de6b5a-80a3-4ffc-a570-e453352d2b6d.mov
 
-
-
-https://user-images.githubusercontent.com/54154602/184961829-5746ab78-ecf4-4cab-976b-c0592f457711.mov
 
 
