@@ -16,6 +16,7 @@ docker-compose up
 ### Step 3:
 - Stylize your favorite images!
 
+Note: The video below is sped up. Currently the algorithm taken ~10 minutes to run the first time you use it. Subsequent runs take ~ 5 - 7 minutes
 
 https://user-images.githubusercontent.com/54154602/184963072-52de6b5a-80a3-4ffc-a570-e453352d2b6d.mov
 
