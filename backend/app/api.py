@@ -6,14 +6,18 @@ from typing import List
 from starlette.responses import StreamingResponse
 import numpy as np
 import time
-
+import multiprocessing
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
+import asyncio
 
 import torchvision.transforms as transforms
 import torchvision.models as models
+
+tff = None
+sff = None
 
 class VGG19(nn.Module):
     def __init__(self):
@@ -28,6 +32,15 @@ class VGG19(nn.Module):
                 features.append(img)
         return features
 
+async def parallel_target_features(c, w, h, tf):
+    tf = tf.view(c, h * w)
+    tf = torch.mm(tf, tf.t())
+    return tf
+
+async def parallel_style_features(c, w, h, sf):
+    sf = sf.view(c, h * w)
+    sf = torch.mm(sf, sf.t())
+    return sf
 
 app = FastAPI()
 
@@ -85,11 +98,13 @@ async def receive_file(base_image: bytes = File(), style_image: bytes = File()):
             base_loss += torch.mean((tf - bf) ** 2)
 
             _, c, h, w = tf.size()
-            tf = tf.view(c, h * w)
-            sf = sf.view(c, h * w)
 
-            tf = torch.mm(tf, tf.t())
-            sf = torch.mm(sf, sf.t())
+            # async speeds up the algorithm by roughly a minute
+            tf, sf = await asyncio.gather(parallel_target_features(c, w, h, tf), parallel_style_features(c, w, h, sf))
+            # print(L, H)
+            # tf = await parallel_target_features(c, w, h, tf)
+            # sf = await parallel_style_features(c, w, h, sf)
+            
 
             style_loss += torch.mean((tf - sf) ** 2 / (c * h * w))
 
