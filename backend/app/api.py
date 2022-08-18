@@ -10,12 +10,9 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 import asyncio
-
 import torchvision.transforms as transforms
 import torchvision.models as models
 
-tff = None
-sff = None
 
 class VGG19(nn.Module):
     def __init__(self):
