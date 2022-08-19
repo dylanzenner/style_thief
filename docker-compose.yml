@@ -2,14 +2,16 @@ version: "3.8"
 services:
   backend:
     build: ./backend
+    image: 889013001590.dkr.ecr.us-east-1.amazonaws.com/style-thief-backend
     container_name: style_thief_backend
     ports:
       - '8000:8000'
-    volumes:
-      - ./backend:/code
+    # volumes:
+    #   - ./backend:/code
 
   frontend:
     build: ./frontend
+    image: 889013001590.dkr.ecr.us-east-1.amazonaws.com/style-thief-frontend
     container_name: style_thief_frontend
     ports:
       - '3000:3000'
