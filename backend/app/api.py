@@ -71,14 +71,14 @@ async def receive_file(base_image: bytes = File(), style_image: bytes = File()):
     style_img_resized = resize_image(style_img).unsqueeze(0).to('cpu')
 
     target = base_img_resized.clone().requires_grad_(True)
-    optimizer = torch.optim.Adam([target], lr=0.03)
+    alpha = 1e3
+    beta = 1e6
+    learning_rate = 0.03
+    optimizer = torch.optim.Adam([target], lr=learning_rate)
 
     vgg = VGG19().to('cpu').eval()
-
-    # 9126.44554066658 seconds for:
-    # learning rate: 0.001
-    # 5000 epochs
-
+    
+    # try and optimize for only 100 epochs in order to have a fast web application
     for epoch in range(100):
         print('Epoch: {}'.format(epoch))
         
@@ -100,7 +100,7 @@ async def receive_file(base_image: bytes = File(), style_image: bytes = File()):
 
             style_loss += torch.mean((tf - sf) ** 2 / (c * h * w))
 
-        total_loss = 1e3 * base_loss + 1e6 * style_loss
+        total_loss = alpha * base_loss + beta * style_loss
         optimizer.zero_grad()
         total_loss.backward()
         optimizer.step()
