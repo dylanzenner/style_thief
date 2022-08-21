@@ -71,9 +71,10 @@ async def receive_file(base_image: bytes = File(), style_image: bytes = File()):
     style_img_resized = resize_image(style_img).unsqueeze(0).to('cpu')
 
     target = base_img_resized.clone().requires_grad_(True)
-    alpha = 1e3
-    beta = 1e6
-    learning_rate = 0.03
+    alpha = 1
+    beta = 1e3
+    learning_rate = 0.2
+    
     optimizer = torch.optim.Adam([target], lr=learning_rate)
 
     vgg = VGG19().to('cpu').eval()
