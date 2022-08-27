@@ -1,13 +1,11 @@
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, File
 from fastapi.middleware.cors import CORSMiddleware
 from PIL import Image
 import io
-from typing import List
 from starlette.responses import StreamingResponse
 import time
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
 import torch.optim as optim
 import asyncio
 import torchvision.transforms as transforms
