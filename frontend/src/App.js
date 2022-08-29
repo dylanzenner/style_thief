@@ -94,7 +94,7 @@ function App() {
   return (
     <div className="App">
         <div className={""}>
-            <div className={'relative text-5xl mt-4 font-bold text-rose-400'}>
+            <div className={'text-5xl mt-4 font-bold text-rose-400'}>
                 Style Thief
             </div>
             
@@ -102,7 +102,7 @@ function App() {
 
                     <div className={'aspect-w-3 aspect-h-3 inline-block ml-5 bg-white rounded drop-shadow-2xl'}>
                         <img className={'border-2 rounded'} height={400} width={400} alt={'base'} src={baseImagePreview}/>
-
+                        
                     </div>
 
                     <div className={'aspect-w-3 aspect-h-3 inline-block ml-5 bg-white rounded drop-shadow-2xl'}>
@@ -131,7 +131,7 @@ function App() {
                         <fieldset>
                                 <input id={'style-image'} type={'file'} accept={'.jpeg, .png, .jpg'} className={'hidden'} onChange={setBaseImageHandler} placeholder={''}/>
                         </fieldset> 
-                            <button htmlFor={'style-image'} className={'border-2 border-rose-400 bg-white rounded-lg active:bg-gradient-to-r from-rose-100 to-teal-100 drop-shadow-2xl text-2xl cursor-pointer px-2'}>Upload Base Image</button>
+                            <button htmlFor={'style-image'} className={'xs:text-sm md:text-md lg:text-2xl border-2 border-rose-400 bg-white rounded-lg active:bg-gradient-to-r from-rose-100 to-teal-100 drop-shadow-2xl cursor-pointer px-2'}>Upload Base Image</button>
                         </form>
                     </div>
 
@@ -140,21 +140,21 @@ function App() {
                             <fieldset>
                                 <input id={'base-image'} type={'file'} accept={'.jpeg, .png, .jpg'} className={'hidden'} onChange={setStyleImageHandler}  placeholder={''}/>
                             </fieldset>
-                            <button htmlFor={'base-image'} className={'border-2 border-rose-400 cursor-pointer bg-white active:bg-gradient-to-r from-rose-100 to-teal-100 rounded-lg drop-shadow-2xl text-2xl px-2'}>Upload Style Image</button>
+                            <button htmlFor={'base-image'} className={'xs:text-sm md:text-md lg:text-2xl border-2 border-rose-400 cursor-pointer bg-white active:bg-gradient-to-r from-rose-100 to-teal-100 rounded-lg drop-shadow-2xl px-2'}>Upload Style Image</button>
                         </form>
                     </div>
 
 
                     <div>
                         
-                        <button onClick={handleOnSubmit} className={'border-2 border-rose-400 px-2 bg-white active:bg-gradient-to-r from-rose-100 to-teal-100 rounded-lg drop-shadow-2xl text-2xl'}>
+                        <button onClick={handleOnSubmit} className={'xs:text-sm md:text-md lg:text-2xl border-2 border-rose-400 px-2 bg-white active:bg-gradient-to-r from-rose-100 to-teal-100 rounded-lg drop-shadow-2xl'}>
                             Transfer
                         </button>
 
                     </div>
 
-                    <div id={'stylized-image-button'} className={'items-center ml-5'}>
-                        <button className={'border-2 border-rose-400 bg-white rounded-lg active:bg-gradient-to-r from-rose-100 to-teal-100 drop-shadow-2xl text-2xl cursor-pointer px-2'} onClick={handleDownload}>Download Image</button>
+                    <div id={'stylized-image-button'} className={'mr-5'}>
+                        <button className={'xs:text-sm md:text-md lg:text-2xl border-2 border-rose-400 bg-white rounded-lg active:bg-gradient-to-r from-rose-100 to-teal-100 drop-shadow-2xl cursor-pointer px-2'} onClick={handleDownload}>Download Image</button>
                     </div>
 
                 </div>
