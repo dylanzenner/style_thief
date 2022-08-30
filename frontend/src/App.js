@@ -165,7 +165,7 @@ function App() {
         <br/>
         <br/>
         <div className={"flex"}>
-            <h3 className={"xs:text-sm md:text-md lg:text-2xl mx-auto w-96 bg-white border-2 rounded-lg border-rose-400"}>
+            <h3 className={"xs:text-sm md:text-md lg:text-2xl mx-auto w-48 bg-white border-2 rounded-lg border-rose-400"}>
                 Turn your creation into a canvas print!
             </h3>
         </div>
