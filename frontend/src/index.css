@@ -12,6 +12,7 @@
  html {
   background-image: url('Ice.jpeg');
   background-repeat: no-repeat;
+  background-size: cover;
  }
  
  ul {
