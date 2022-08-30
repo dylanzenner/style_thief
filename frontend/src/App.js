@@ -1,7 +1,6 @@
 import logo from './image-placeholder.jpeg';
 import './App.css';
 import {useState, useEffect} from "react";
-import { motion } from 'framer-motion';
 
 
 function App() {
@@ -151,9 +150,9 @@ function App() {
 
                     <div>
                         
-                        <motion.button whileHover={{scale: 1.2}} onClick={handleOnSubmit} className={'xs:text-sm md:text-md lg:text-2xl border-2 border-rose-400 px-2 bg-white active:bg-gradient-to-r from-rose-100 to-teal-100 rounded-lg drop-shadow-2xl'}>
+                        <button onClick={handleOnSubmit} className={'xs:text-sm md:text-md lg:text-2xl border-2 border-rose-400 px-2 bg-white active:bg-gradient-to-r from-rose-100 to-teal-100 rounded-lg drop-shadow-2xl'}>
                             Transfer
-                        </motion.button>
+                        </button>
 
                     </div>
 
