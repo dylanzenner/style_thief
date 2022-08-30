@@ -67,7 +67,7 @@ function App() {
             body: formData,
         };
 
-        fetch('http://localhost:8000/upload', requestOptions)
+        fetch('http://54.204.0.54:8000/upload', requestOptions)
         .then(response => response.blob())
         .then(blob => {
 
@@ -97,7 +97,6 @@ function App() {
             <div className={'text-5xl mt-4 font-bold text-rose-400'}>
                 Style Thief
             </div>
-            <hr className='mt-2 border-2 border-rose-400 '/>
             
                 <div className={'mt-5 py-20 grid grid-cols-4 gap-4 content-center'}>
 

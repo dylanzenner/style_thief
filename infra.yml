@@ -84,24 +84,43 @@ Resources:
             Principal:
               Service:
                 - ec2.amazonaws.com
-              Action:
-                - sts:AssumeRole
+            Action:
+              - sts:AssumeRole
+
+  # EIP for EC2
+  EIPAssociation:
+    Type: AWS::EC2::EIPAssociation
+    DependsOn: EC2Instance
+    Properties:
+      EIP: 54.204.0.54
+      InstanceId: !Ref EC2Instance
 
   # EC2 Instance for Style Thief API
   EC2Instance:
     Type: AWS::EC2::Instance
     DependsOn: InstanceProfile
     Properties: 
-      ImageId: 
-      AvailabilityZone:
-      InstanceType:
-      IamInstanceProfile:
+      ImageId: ami-05fa00d4c63e32376
+      AvailabilityZone: us-east-1a
+      InstanceType: t3.xlarge
+      IamInstanceProfile: !Ref InstanceProfile
       KeyName: style-thief
       SubnetId: !Ref PublicSubnet
       UserData:
         !Base64 |
           #!/bin/bash
           yum update -y
+          sudo mkdir /usr/bin/api
+          sudo yum install python3-pip
+          sudo pip3 install fastapi
+          sudo pip3 install uvicorn
+          sudo pip3 install pandas
+          sudo pip3 install Pillow
+          sudo pip3 install torch
+          sudo pip3 install torchvision
+          sudo pip3 install python-multipart
+          sudo aws s3 cp s3://style-thief/backend /usr/bin/api --recursive
+          python3 /usr/bin/api/main/py
           
   
   
