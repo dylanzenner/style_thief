@@ -67,7 +67,7 @@ function App() {
             body: formData,
         };
 
-        fetch('http://54.204.0.54:8000/upload', requestOptions)
+        fetch('http://localhost:8000/upload', requestOptions)
         .then(response => response.blob())
         .then(blob => {
 
