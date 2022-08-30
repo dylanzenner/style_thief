@@ -8,9 +8,10 @@
   box-sizing: border-box;
   margin-top: 0;
  }
-
+ 
  html {
   background-image: url('Ice.jpeg');
+  background-repeat: no-repeat;
  }
  
  ul {
