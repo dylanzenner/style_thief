@@ -1,6 +1,7 @@
-import logo from './logo.svg';
+import logo from './image-placeholder.jpeg';
 import './App.css';
 import {useState, useEffect} from "react";
+import { motion } from 'framer-motion';
 
 
 function App() {
@@ -97,6 +98,7 @@ function App() {
             <div className={'text-5xl mt-4 font-bold text-rose-400'}>
                 Style Thief
             </div>
+            <hr className='mt-2 border-2 border-rose-400 '/>
             
                 <div className={'mt-5 py-20 grid grid-cols-4 gap-4 content-center'}>
 
@@ -130,8 +132,9 @@ function App() {
                         <form>
                         <fieldset>
                                 <input id={'style-image'} type={'file'} accept={'.jpeg, .png, .jpg'} className={'hidden'} onChange={setBaseImageHandler} placeholder={''}/>
+                                <label whileHover={{scale: 1.1}} htmlFor={'style-image'} className={'inline-block xs:text-sm md:text-md lg:text-2xl border-2 border-rose-400 bg-white rounded-lg active:bg-gradient-to-r from-rose-100 to-teal-100 drop-shadow-2xl cursor-pointer px-2'}>Upload Base Image</label>
+
                         </fieldset> 
-                            <button htmlFor={'style-image'} className={'xs:text-sm md:text-md lg:text-2xl border-2 border-rose-400 bg-white rounded-lg active:bg-gradient-to-r from-rose-100 to-teal-100 drop-shadow-2xl cursor-pointer px-2'}>Upload Base Image</button>
                         </form>
                     </div>
 
@@ -139,17 +142,18 @@ function App() {
                         <form>
                             <fieldset>
                                 <input id={'base-image'} type={'file'} accept={'.jpeg, .png, .jpg'} className={'hidden'} onChange={setStyleImageHandler}  placeholder={''}/>
+                                <label htmlFor={'base-image'} className={'inline-block xs:text-sm md:text-md lg:text-2xl border-2 border-rose-400 cursor-pointer bg-white active:bg-gradient-to-r from-rose-100 to-teal-100 rounded-lg drop-shadow-2xl px-2'}>Upload Style Image</label>
+
                             </fieldset>
-                            <button htmlFor={'base-image'} className={'xs:text-sm md:text-md lg:text-2xl border-2 border-rose-400 cursor-pointer bg-white active:bg-gradient-to-r from-rose-100 to-teal-100 rounded-lg drop-shadow-2xl px-2'}>Upload Style Image</button>
                         </form>
                     </div>
 
 
                     <div>
                         
-                        <button onClick={handleOnSubmit} className={'xs:text-sm md:text-md lg:text-2xl border-2 border-rose-400 px-2 bg-white active:bg-gradient-to-r from-rose-100 to-teal-100 rounded-lg drop-shadow-2xl'}>
+                        <motion.button whileHover={{scale: 1.2}} onClick={handleOnSubmit} className={'xs:text-sm md:text-md lg:text-2xl border-2 border-rose-400 px-2 bg-white active:bg-gradient-to-r from-rose-100 to-teal-100 rounded-lg drop-shadow-2xl'}>
                             Transfer
-                        </button>
+                        </motion.button>
 
                     </div>
 
@@ -159,6 +163,14 @@ function App() {
 
                 </div>
         </div>
+        <br/>
+        <br/>
+        <div className={"flex"}>
+            <h3 className={"xs:text-sm md:text-md lg:text-2xl mx-auto w-48 bg-white border-2 rounded-lg border-rose-400"}>
+                Turn your creation into a canvas print!
+            </h3>
+        </div>
+
     </div>
   );
 }
