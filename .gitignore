@@ -8,6 +8,9 @@
 # Mac/OSX
 .DS_Store
 /backend/.DS_Store
+node_modules/
+package-lock.json
+package.json
 
 
 # Windows
